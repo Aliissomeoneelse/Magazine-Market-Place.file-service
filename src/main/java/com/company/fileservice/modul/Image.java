@@ -14,15 +14,15 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "image_id")
-    private  Integer imageId;
-    private  String  path;
-    private  String type;
-    private  Integer size;
-    private  String token;
+    private Integer imageId;
+    private String path;
+    private String type;
+    private Integer size;
+    private String token;
     @Column(name = "create_at")
     private LocalDateTime createAt;
     @Column(name = "update_at")
-    private  LocalDateTime updateAt;
+    private LocalDateTime updateAt;
     @Column(name = "delete_at")
-    private  LocalDateTime deleteAt;
+    private LocalDateTime deleteAt;
 }

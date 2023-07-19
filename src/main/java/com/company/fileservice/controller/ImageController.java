@@ -8,9 +8,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.Set;
 
 @RestController
-@RequestMapping("image")
+@RequestMapping("images")
 @RequiredArgsConstructor
 public class ImageController {
     private final ImageService imageService;
@@ -38,5 +39,10 @@ public class ImageController {
     @GetMapping("/all")
     public ResponseDto<Page<ImageDto>> getAll(@RequestParam Map<String, String> params) {
         return imageService.getAll(params);
+    }
+
+    @GetMapping("/get-images-by-user/{id}")
+    public ResponseDto<Set<ImageDto>> getImagesByUsersId(@PathVariable("id") Integer id) {
+        return imageService.getImagesByUsersId(id);
     }
 }

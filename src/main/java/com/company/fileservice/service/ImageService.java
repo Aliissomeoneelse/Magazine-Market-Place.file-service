@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -145,6 +146,22 @@ public class ImageService {
                 .message("OK")
                 .success(true)
                 .data(imageDto)
+                .build();
+    }
+
+    public ResponseDto<Set<ImageDto>> getImagesByUsersId(Integer id) {
+        Set<Image> images = imageRepository.findAllByImageId(id);
+        if (images.isEmpty()) {
+            return ResponseDto.<Set<ImageDto>>builder()
+                    .message("Loaner is not found!")
+                    .code(-3)
+                    .data(null)
+                    .build();
+        }
+        return ResponseDto.<Set<ImageDto>>builder()
+                .success(true)
+                .message("OK")
+                .data(imageMapper.toSetDto(images))
                 .build();
     }
 }
